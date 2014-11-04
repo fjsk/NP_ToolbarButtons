@@ -138,8 +138,9 @@ window.onload = helperinit;
 		$rbutton=''; 
 		$script=''; 
 		$pattern='/<div([^>]*?)class="jsbuttonbar"([^>]*?)>/'; 
-		if (preg_match($pattern,$buff,$matches)){ 
-			$manager->notify('PreToolbarParse',array('lbutton' => &$lbutton, 'rbutton' => &$rbutton, 'script' => &$script)); 
+		if (preg_match($pattern,$buff,$matches)){
+			$params = array('lbutton' => &$lbutton, 'rbutton' => &$rbutton, 'script' => &$script);
+			$manager->notify('PreToolbarParse',$params); 
 			$buff=str_replace($matches[0],$matches[0].$lbutton,$buff); 
 			$pattern=array('/<\/div>([^<]*?)<textarea([^>]*?)id="inputbody"([^>]*?)>/', 
 				'/<\/div>([^<]*?)<textarea([^>]*?)id="inputmore"([^>]*?)>/'); 
